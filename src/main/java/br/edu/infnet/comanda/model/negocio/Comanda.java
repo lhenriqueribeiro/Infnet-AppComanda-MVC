@@ -2,43 +2,11 @@ package br.edu.infnet.comanda.model.negocio;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-@Entity
-@Table(name = "TComanda")
 public class Comanda {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idComanda;
-	
-	@Column(name = "descricao")
 	private String descricao;
-	
-	@OneToOne(fetch = FetchType.EAGER,
-			  cascade = CascadeType.ALL,
-			  orphanRemoval = true)
-	@JoinColumn(name = "idMesa")
 	private Mesa mesa;
-
-	@JsonManagedReference
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable(name="TComandaCardapio", 
-    	joinColumns={@JoinColumn(name="idComanda")},
-    	inverseJoinColumns={@JoinColumn(name="idCardapio")})
 	private List<Cardapio> cardapios;
     
 	public Comanda() {

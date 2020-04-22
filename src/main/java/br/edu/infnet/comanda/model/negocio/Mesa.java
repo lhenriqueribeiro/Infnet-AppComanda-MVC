@@ -1,17 +1,7 @@
 package br.edu.infnet.comanda.model.negocio;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "TMesa")
 public class Mesa {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idMesa;
 	private String descricao;
 	
